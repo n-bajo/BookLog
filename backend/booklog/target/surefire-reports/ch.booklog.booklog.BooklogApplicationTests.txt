@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: ch.booklog.booklog.BooklogApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.418 s <<< FAILURE! - in ch.booklog.booklog.BooklogApplicationTests
+ch.booklog.booklog.BooklogApplicationTests  Time elapsed: 0.417 s  <<< ERROR!
+java.lang.IllegalStateException: Unable to find a @SpringBootConfiguration, you need to use @ContextConfiguration or @SpringBootTest(classes=...) with your test
+
