@@ -5,10 +5,10 @@ In one of my courses I created a website to track reading Progress in books. It'
 
  - Create books 🟧
  - Edit books 🟧
- - Delete books🟧
- - Keep track of reading progress 🟩
- - Rate books 🟩
- - Categorize books 🟩
+ - Delete books🟩 - 23.03.2023
+ - Keep track of reading progress 🟩 -release
+ - Rate books 🟩 -release
+ - Categorize books 🟩 - release
 
 
 ![BookLog UI](https://i.imgur.com/1DTVU3u.png)

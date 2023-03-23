@@ -73,7 +73,7 @@ class BookEntrys extends Component {
         const books = [...this.state.books]
         const index = books.findIndex(function (bookId){return bookId.id == id})
 
-        books.splice(index)
+        books.splice(index, 1)
         this.setState({books});
         
     }
