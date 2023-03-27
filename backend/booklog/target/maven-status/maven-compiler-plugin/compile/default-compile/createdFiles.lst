@@ -1,8 +1,0 @@
-com\booklog\BooklogApplication.class
-com\booklog\model\ReadStatus.class
-com\booklog\repository\ReadStatusRepository.class
-com\booklog\service\BookService.class
-com\booklog\model\Book.class
-com\booklog\service\BookServiceImp.class
-com\booklog\repository\BookRepository.class
-com\booklog\controller\BookController.class
