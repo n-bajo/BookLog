@@ -36,7 +36,7 @@ class Book extends Component {
         <div className="bookEntry">
         <div className="editButtons">
             <button className="editBook" type="button" onClick={() => this.props.onDelete(this.props.id)}>⌫</button>
-            <Link to={"/edit"} state={{ id: this.props.id }}><button className="editBook" type="button">⇄</button></Link>
+            <Link to={"/editFetch"} state={{ id: this.props.id }}><button className="editBook" type="button">⇄</button></Link>
         </div>
         <div className="pageButtons">
         <input type="button" onClick={() => this.props.onUpdate(this.props.addValue[0], this.props.id)} className={buttonClass[0]} value={buttonName[0]}/>

@@ -4,7 +4,7 @@ In one of my courses I created a website to track reading Progress in books. It'
 ## Features
 
  - Create books 🟧
- - Edit books 🟧
+ - Edit books 🟩 - 27.03.2023
  - Delete books🟩 - 23.03.2023
  - Keep track of reading progress 🟩 -release
  - Rate books 🟩 -release

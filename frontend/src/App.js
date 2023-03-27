@@ -4,6 +4,7 @@ import BookEntrys from './components/bookEntrys';
 import Header from './components/header';
 import MenuFilter from './components/menuFilter';
 import EditFetch from './components/editFetch';
+import Edit from './components/edit';
 
 
 class App extends Component {
@@ -22,7 +23,8 @@ class App extends Component {
             <Route path="/Anstehend" element={<BookEntrys statusId={2} />} />
             <Route path="/Abgebrochen" element={<BookEntrys statusId={3} />} />
             <Route path="/Fertig" element={<BookEntrys statusId={4} />} />
-            <Route path="/edit" element={<EditFetch />} />
+            <Route path="/edit" element={<Edit />} />
+            <Route path="/editFetch" element={<EditFetch />} />
         
             
 
