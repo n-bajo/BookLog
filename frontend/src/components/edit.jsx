@@ -13,12 +13,15 @@ class Edit extends Component {
   state = {
     book: [],
     ratingOptions: ["1", "2", "3", "4", "5"],
-    readStatusOptions: ["Aktuell","Noch nicht begonnen","Abgebrochen","Fertig"
+    readStatusOptions: [
+      "Aktuell",
+      "Noch nicht begonnen",
+      "Abgebrochen",
+      "Fertig",
     ],
   };
 
-
-  // The next 3 functions update the input to the state. 
+  // The next 3 functions update the input to the state.
   // I had to create speperate functions for the dropdowns since mui didn't allow overwrtining their ids
   handleChange = (e) => {
     const name = e.target.id;
@@ -47,13 +50,12 @@ class Edit extends Component {
           },
         });
         break;
-      
     }
     console.log(this.state.book);
-        console.log(" - book after handler")
-        console.log(e.target.id, "parameter")
+    console.log(" - book after handler");
+    console.log(e.target.id, "parameter");
   };
-  
+
   handleStatus = (e) => {
     const statusOptions = [
       { id: 1, optionId: "readStatus-option-0" },
@@ -61,17 +63,18 @@ class Edit extends Component {
       { id: 3, optionId: "readStatus-option-2" },
       { id: 4, optionId: "readStatus-option-3" },
     ];
-  
-    const selectedOption = statusOptions.find(option => option.optionId === e.target.id);
+
+    const selectedOption = statusOptions.find(
+      (option) => option.optionId === e.target.id
+    );
     const newStatus = { ...this.state.book.status, id: selectedOption.id };
-  
+
     this.setState({
       book: {
         ...this.state.book,
         status: newStatus,
       },
     });
-
   };
 
   handleRating = (e) => {
@@ -82,22 +85,21 @@ class Edit extends Component {
       { id: 4, optionId: "userRating-option-3" },
       { id: 5, optionId: "userRating-option-4" },
     ];
-  
-    const selectedOption = ratingOptions.find(option => option.optionId === e.target.id);
+
+    const selectedOption = ratingOptions.find(
+      (option) => option.optionId === e.target.id
+    );
     const newRating = selectedOption.id;
-  
+
     this.setState({
       book: {
         ...this.state.book,
         user_rating: newRating,
       },
     });
-  console.log(selectedOption, "option")
-  console.log(newRating, "rating")
+    console.log(selectedOption, "option");
+    console.log(newRating, "rating");
   };
-  
-  
-  
 
   fetchBook() {
     const book = [this.state.book];
@@ -106,31 +108,64 @@ class Edit extends Component {
       .then((response) => response.json())
       .then((data) =>
         this.setState({
-          book: {...data,
+          book: {
+            ...data,
             max_page_num: data.max_page_num.toString(),
-            current_page_num: data.current_page_num.toString()
-          }
+            current_page_num: data.current_page_num.toString(),
+          },
         })
       );
   }
-  
-  // Sends book to backend and redirecs to main page
+
+  // Sends book to backend, make sure fields are set and redirecs to main page
   handleEdit = (book) => {
     console.log("sending..");
-    fetch('http://localhost:8080/book/edit?id=' + book.id, {
-      headers: { "Content-Type": "application/json" },
-      method: 'PUT',
-      body: JSON.stringify(book)
-    });
-    console.log(book);
 
-    window.location.href = "/"
-  }
-  
+    const { book_title, max_page_num, current_page_num, user_rating, status } =
+      book;
+
+    if (
+      book_title.trim() === "" ||
+      max_page_num === "" ||
+      current_page_num === "" ||
+      user_rating === "" ||
+      !status
+    ) {
+      alert("Bitte füllen Sie alle Felder aus.");
+      return;
+    }
+
+    if (
+      current_page_num > max_page_num
+      
+    ) {
+      alert("[Gelesene Seiten] muss kleiner sein wie  [Anzahl Seiten]");
+      return;
+    }
+
+    if (this.props.id) {
+      fetch("http://localhost:8080/book/edit?id=" + book.id, {
+        headers: { "Content-Type": "application/json" },
+        method: "PUT",
+        body: JSON.stringify(book),
+      });
+      console.log(book);
+    } else {
+      fetch("http://localhost:8080/book/add", {
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+        body: JSON.stringify(book),
+      });
+      console.log("new book being added ", JSON.stringify(book));
+    }
+
+    window.location.href = "/";
+  };
 
   componentDidMount() {
-    this.fetchBook();
-    
+    if (this.props.id) {
+      this.fetchBook();
+    }
   }
 
   render() {
@@ -195,7 +230,11 @@ class Edit extends Component {
                 Abbruch
               </Button>
             </a>
-            <Button onClick={() => this.handleEdit(this.state.book)} variant="contained" endIcon={<SendIcon />}>
+            <Button
+              onClick={() => this.handleEdit(this.state.book)}
+              variant="contained"
+              endIcon={<SendIcon />}
+            >
               Senden
             </Button>
           </Stack>
