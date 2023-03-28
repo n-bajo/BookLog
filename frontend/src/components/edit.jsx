@@ -9,6 +9,12 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 import Stack from "@mui/material/Stack";
 
+//for mui buttons
+const commonStyle = {
+  backgroundColor: "#2C6E49",
+  color: "#CCDAD1",
+};
+
 class Edit extends Component {
   state = {
     book: [],
@@ -135,10 +141,7 @@ class Edit extends Component {
       return;
     }
 
-    if (
-      current_page_num > max_page_num
-      
-    ) {
+    if (current_page_num > max_page_num) {
       alert("[Gelesene Seiten] muss kleiner sein wie  [Anzahl Seiten]");
       return;
     }
@@ -226,7 +229,11 @@ class Edit extends Component {
 
           <Stack direction="row" spacing={2}>
             <a href="http://localhost:3000/">
-              <Button variant="outlined" startIcon={<DeleteIcon />}>
+              <Button
+                variant="outlined"
+                startIcon={<DeleteIcon />}
+                style={commonStyle}
+              >
                 Abbruch
               </Button>
             </a>
@@ -234,6 +241,7 @@ class Edit extends Component {
               onClick={() => this.handleEdit(this.state.book)}
               variant="contained"
               endIcon={<SendIcon />}
+              style={commonStyle}
             >
               Senden
             </Button>
