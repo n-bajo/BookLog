@@ -13,7 +13,6 @@ class BookEntrys extends Component {
   }
 
   fetchBooks() {
-    const books = [this.state.books];
     switch (this.props.statusId) {
       case 1:
         fetch("http://localhost:8080/book/getAktuell")

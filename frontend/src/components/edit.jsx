@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import Button from "@mui/material/Button";
@@ -108,7 +105,6 @@ class Edit extends Component {
   };
 
   fetchBook() {
-    const book = [this.state.book];
     console.log("Attempting to fetch book with id", this.props.id);
     fetch("http://localhost:8080/book/getById?id=" + this.props.id)
       .then((response) => response.json())

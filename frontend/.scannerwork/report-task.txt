@@ -1,0 +1,6 @@
+projectKey=booklog-frontend
+serverUrl=http://localhost:9000
+serverVersion=10.0.0.68432
+dashboardUrl=http://localhost:9000/dashboard?id=booklog-frontend
+ceTaskId=AYjgF0kEiAdw7a0LQPM8
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYjgF0kEiAdw7a0LQPM8

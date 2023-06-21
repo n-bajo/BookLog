@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 
 class MenuFilter extends Component {
@@ -14,7 +13,7 @@ class MenuFilter extends Component {
         <a href="http://localhost:3000/Abgebrochen"><button className="menuButton" type="button">Abgebrochen</button> </a>
         <a href="http://localhost:3000/Fertig"><button className="menuButton" type="button">Fertig</button> </a>
         <a href="http://localhost:3000/edit"> <button className="menuButton" style={{backgroundColor: '#2C6E49', color: '#fff', marginLeft: "20px"}}>Hinzufügen</button> </a>
-        
+
         
         
     </div>
