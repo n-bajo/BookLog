@@ -11,7 +11,7 @@ public interface BookService {
     public void removeBook(Integer id);
 
 
-    List<Book> findByStatusId(Integer StatusId);
+    List<Book> findByStatusId(Integer statusId);
 
     public Book editBook(int id, Book book);
 

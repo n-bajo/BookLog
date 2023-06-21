@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.util.List;
+
 
 @Entity
 @Table(name="book")
@@ -15,13 +15,12 @@ public class Book{
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    private int current_page_num;
-    private int max_page_num;
-    private int user_rating;
-    private String book_title;
+    private int currentPageNum;
+    private int maxPageNum;
+    private int userRating;
+    private String bookTitle;
 
-    public Book() {
-    }
+
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "status_id", nullable = false)
@@ -40,35 +39,35 @@ public class Book{
         this.id = id;
     }
 
-    public int getCurrent_page_num() {
-        return this.current_page_num;
+    public int getCurrentPageNum() {
+        return this.currentPageNum;
     }
 
-    public void setCurrent_page_num(int current_page_num) {
-        this.current_page_num = current_page_num;
+    public void setCurrentPageNum(int currentPageNum) {
+        this.currentPageNum = currentPageNum;
     }
 
-    public int getMax_page_num() {
-        return this.max_page_num;
+    public int getMaxPageNum() {
+        return this.maxPageNum;
     }
 
-    public void setMax_page_num(int max_page_num) {
-        this.max_page_num = max_page_num;
+    public void setMaxPageNum(int maxPageNum) {
+        this.maxPageNum = maxPageNum;
     }
 
-    public int getUser_rating() {
-        return this.user_rating;
+    public int getUserRating() {
+        return this.userRating;
     }
 
-    public void setUser_rating(int user_rating) {
-        this.user_rating = user_rating;
+    public void setUserRating(int userRating) {
+        this.userRating = userRating;
     }
 
-    public String getBook_title() {
-        return this.book_title;
+    public String getBookTitle() {
+        return this.bookTitle;
     }
 
-    public void setBook_title(String book_title) {
-        this.book_title = book_title;
+    public void setBookTitle(String bookTitle) {
+        this.bookTitle = bookTitle;
     }
 }

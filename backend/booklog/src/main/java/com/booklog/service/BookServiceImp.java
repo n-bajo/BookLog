@@ -29,8 +29,8 @@ public class BookServiceImp implements BookService{
     }
 
     @Override
-    public List<Book> findByStatusId(Integer StatusId){
-        return bookRepository.findByStatusId(StatusId);
+    public List<Book> findByStatusId(Integer statusId){
+        return bookRepository.findByStatusId(statusId);
     }
 
     @Override

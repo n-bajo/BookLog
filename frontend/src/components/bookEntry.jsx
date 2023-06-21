@@ -14,8 +14,6 @@ class Book extends Component {
 
 
     render() { 
-       
-      
         let buttonName = this.props.addValue.map(x => '+' + x);
         
         // Used for color button styling
@@ -47,6 +45,7 @@ class Book extends Component {
         <p className="rating">Bewertung {this.props.userRating}/5</p>
         <p className="pageNum">Seite {this.props.currentPageNum}/{this.props.maxPageNum}</p>
     </div>
+    
         );
 
     }
