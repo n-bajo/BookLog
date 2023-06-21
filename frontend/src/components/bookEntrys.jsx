@@ -72,14 +72,14 @@ class BookEntrys extends Component {
   sortBooks(books, sortOption) {
     const sortedBooks = [...books].sort((a, b) => {
       if (sortOption === "title") {
-        return b.bookTitle.localeCompare(a.bookTitle); 
+        return b.bookTitle.localeCompare(a.bookTitle);
       } else if (sortOption === "rating") {
-        return b.userRating - a.userRating; 
+        return b.userRating - a.userRating;
       }
-      return 0; 
+      return 0;
     });
     console.log("sorted books:", sortedBooks);
-    this.setState({ books: sortedBooks }); 
+    this.setState({ books: sortedBooks });
   }
 
   handlePageUpdate = (updateNum, id) => {
@@ -108,22 +108,39 @@ class BookEntrys extends Component {
     this.setState({ books });
   };
 
+  handleSortChange = (sortOption) => {
+    this.setState({ sortOption }, () => {
+      this.sortBooks(this.state.books, this.state.sortOption);
+    });
+  };
+
   render() {
     return (
       <div>
-        {this.state.books.map((book) => (
-          <Book
-            key={book.id}
-            id={book.id}
-            bookTitle={book.bookTitle}
-            currentPageNum={book.currentPageNum}
-            maxPageNum={book.maxPageNum}
-            userRating={book.userRating}
-            onUpdate={this.handlePageUpdate}
-            onDelete={this.deleteQuestion}
-            addValue={[5, 10, 20]}
-          />
-        ))}
+        <div>
+            <br></br>
+          <button className="menuButton" type="button" onClick={() => this.handleSortChange("rating")}>
+            Sort by Rating
+          </button>
+          <button  className="menuButton" type="button" onClick={() => this.handleSortChange("title")}>
+            Sort by Title
+          </button>
+        </div>
+        <div>
+          {this.state.books.map((book) => (
+            <Book
+              key={book.id}
+              id={book.id}
+              bookTitle={book.bookTitle}
+              currentPageNum={book.currentPageNum}
+              maxPageNum={book.maxPageNum}
+              userRating={book.userRating}
+              onUpdate={this.handlePageUpdate}
+              onDelete={this.deleteQuestion}
+              addValue={[5, 10, 20]}
+            />
+          ))}
+        </div>
       </div>
     );
   }

@@ -16,6 +16,7 @@ class MenuFilter extends Component {
         <a href="http://localhost:3000/edit"> <button className="menuButton" style={{backgroundColor: '#2C6E49', color: '#fff', marginLeft: "20px"}}>Hinzufügen</button> </a>
         
         
+        
     </div>
     
     );
